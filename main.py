@@ -1,25 +1,48 @@
-from datetime import datetime
 import os
 import time
-import utilidades as ut
+import utilidades as util
 
-def menu_principal():
-  print("""Menu principal
-      1 - Registrar Usuario.
-      2 - Visulizar Usuarios registrados.
-      3 - Agendar Citas.
-      4 - Salir.""")
-      
-option = int()
+#Main Menu
+Programa = """+---------------------------------------------------+
+| +-----------------------------------------------+ |
+| | +-------------------------------------------+ | |
+| | | Inicializando programa para agendar citas | | |
+| | +-------------------------------------------+ | |
+| +-----------------------------------------------+ |
++---------------------------------------------------+
+"""
+print(Programa)
 
-menu_principal()
-time.sleep(4)
+time.sleep(3)
 
-while True:
-  os.system('clear')
-  print('Ingrese la opcion \n')
-  option = int(input())
-  try:
-    if option == 1:
-      tipo_doc = input('Cual es tu tipo de documento?\t (CC,PA,TI o CE)\n  => ').upper()
-      os.system ("clear")
+menu = ['1 - Registrar Usuario\n', '2 - Visualizar Usuarios Registrados\n', '3 - Agendar Citas\n', '4 - Salir\n']
+
+for i in range(0, 4):
+	print(menu[i])
+
+opcion = int(input("Por favor ingrese la opcion: "))
+
+def main_menu(opcion):
+	op = int(input)
+	while op != 4:
+		try:
+			if op == 1:
+				os.system('clear')
+				print("""Registrando Usuario, por favor, ingrese los siguientes datos:
+						Nombre:
+						Apellido:
+						Tipo de documento:
+						Numero de documento:
+						Fecha de naciemiento:
+						Grupo Sanguíneo:
+						Correo:
+						Numero de telefono:
+						""")
+		except:
+			if op != 4:
+				print("Ha seleccionado una opcion errónea, por favor intentelo de nuevo:")
+				print(menu)
+				time.sleep(4)
+				main_menu()
+	
+	main_menu(opcion)
