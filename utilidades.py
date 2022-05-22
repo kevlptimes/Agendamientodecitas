@@ -56,8 +56,8 @@ class db:
         else:
             return False
 
-    def vnumero_doc(numero_doc):
-        if (numero_doc.isnumeric() and len(numero_doc) <= 12):
+    def vnumero_doc(id):
+        if (id.isnumeric() and len(id) <= 12):
             return True
         else:
             return False
@@ -121,17 +121,17 @@ class db:
                 print("No esta registrado")
                 return False
 
-    def validar_fecha_cita(fecha_cita):
+    def validar_fecha_cita(self, fecha_cita):
         if datetime.strptime(fecha_cita, '%Y-%m-%d') > datetime.now():
             return True
         else:
             return False
 
-    def agendar_citas(datos, id, fecha):
-        existe = Validar_Existente(datos, id)
+    def agendar_citas(self, datos, id, fecha):
+        existe = self.Validar_Existente(datos, id)
         if existe:
             fecha_date = datetime.strptime(fecha, '%Y-%m-%d').date()
-            if validar_fecha_cita(fecha_date):
+            if self.validar_fecha_cita(fecha_date):
                 return fecha_date
             else:
                 return False
